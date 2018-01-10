@@ -1,0 +1,15 @@
+//Racing Game Requirements
+
+Goal: Math game that tests you against a computer
+
+Start: simple equations
+Mid: increase level of difficulty
+End: success with tracker on correct/incorrect answers
+
+
+Visuals: two cars.  display showing correct/incorrect responses
+
+Buttons/boxes: start button, text box to provide answers
+
+
+Automated: randomly generated problems, comparing user provided answer with actual results
