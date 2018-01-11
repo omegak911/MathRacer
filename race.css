@@ -23,7 +23,7 @@ input {
 	border-style: solid;
 }
 
-.problems {
+.problemsBox {
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 0px;
@@ -32,6 +32,13 @@ input {
 	width: 500px;
 	border-style: solid;
 }
+
+.problemDisplay {
+	margin: 15px;
+	font-size: 50px;
+}
+
+
 
 .solutions {
 	grid-area: "solutions";

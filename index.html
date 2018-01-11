@@ -21,7 +21,7 @@
 
 
 
-		<div class="problems">
+		<div class="problemsBox">
 			<div class="problemDisplay">
 
 			</div>
@@ -40,7 +40,7 @@
 
 			    var $currentProblem = $(this).closest('body').find('.problemDisplay');
 			    basicMathProblems();
-			    $currentProblem.text(firstParam + ' + ' + secondParam);
+			    $currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
 
 				})
 			});
@@ -49,10 +49,21 @@
 				$('input').on('keypress', function(e) {
 					if (e.which === 13) {
 
-			    var $currentProblem = $(this).closest('body').find('.problemDisplay');
-			    basicMathProblems();
-			    $currentProblem.text(firstParam + ' + ' + secondParam);
-			    $(this).val('');
+			    	var $currentProblem = $(this).closest('body').find('.problemDisplay');
+			    	var $submittedAnswer = $(this).val();
+						if (Number($submittedAnswer) === result) {
+							$currentProblem.text('Correct!');
+						} else {
+							$currentProblem.text('Incorrect');
+						}
+
+			    	$(this).val('');
+
+						setTimeout( function() {
+					    basicMathProblems();
+				    	$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+				    }	, 2000);
+
 
 			  	}
 				})
@@ -62,6 +73,4 @@
 
 
 	</body>
-
-
 </html>
