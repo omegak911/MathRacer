@@ -81,7 +81,13 @@
 
 						setTimeout( function() {
 					    basicMathProblems();
-				    	$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+					    if (randomOperator === 0) {
+				    		$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+				    	} else if (randomOperator === 1) {
+				    		$currentProblem.text(firstParam + ' - ' + secondParam + ' = ???');
+				    	} else {
+				    		$currentProblem.text(firstParam + ' * ' + secondParam + ' = ???');
+				    	}
 				    }	, 1000);
 
 			  	}

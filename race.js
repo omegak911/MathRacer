@@ -22,18 +22,36 @@ function playerMoves() {
 }
 
 //function that randomly generates Math Problems
-var firstParam, secondParam, result;   //global var cuz we're gonna invoke display on it on html
+var firstParam, secondParam, result, randomOperator;   //global var cuz we're gonna invoke display on it on html
 
 function basicMathProblems() {
-	firstParam = randomNum();
-	secondParam = randomNum();
-	result = firstParam + secondParam; //start with simply addition.  Once page works, create random generated operators
-
+	randomOperator = Math.floor(Math.random() * 3); //*num changes with additional operators.  Right now we are using just 2
+	
+	if (randomOperator < 2) {
+		firstParam = randomNumUpTo100();
+		secondParam = randomNumUpTo100();
+		if (randomOperator === 0) {
+			result = firstParam + secondParam;
+		} else {
+			result = firstParam - secondParam;
+		}
+	} else if (randomOperator >= 2) {
+		firstParam = randomNumUpTo15();
+		secondParam = randomNumUpTo15();
+		if (randomOperator === 2) {
+			result = firstParam * secondParam;
+		}
+	}
 	return result;
 }
 
-function randomNum() {
+function randomNumUpTo100() {
 	return Math.floor(Math.random() * 101);
 }
+
+function randomNumUpTo15() {
+	return Math.floor(Math.random() * 16);
+}
+
 basicMathProblems();
 console.log(firstParam);
