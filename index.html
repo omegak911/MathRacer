@@ -11,9 +11,11 @@
 		<h1> Super Math Racer </h1>
 
 		<div class="progress">
+			<img src="images/road.jpg" alt="Road Background" width="100%" height="100%">
+			<img src="images/blueCar2.png" alt="player car" class="player car">
+			<img src="images/redCar2.png" alt="computer car" class="computer car">
 
 		<!-- display area for user car and bot car moving right to left -->
-
 		</div>
 
 		<!-- Start Game Button with image -->
@@ -21,26 +23,40 @@
 
 
 
-		<div class="problemsBox">
-			<div class="problemDisplay">
-
-			</div>
-		<!-- box to display math problem, displays correct/incorrect, clears after every answer, then shows next problem-->
-		</div>
-
 		<div class="solutions">
 		<!-- textbox to provide answers -->
-		<input type="textbox">
+			<input type="textbox" class="hide">
 		</div>
 
 
 		<script>
 			$(document).ready(function() {
 				$('button').on('click', function(){
+			    $(this).remove();
+			    var $body = $(this).closest('body');
+			    var $problemsBox = $('<div class="problemsBox"></div>');
+			    var $problemDisplay = $('<div class="problemDisplay"></div>');
+			    $problemsBox.insertAfter('.progress');
+			    $problemDisplay.appendTo('.problemsBox');
+			    $('input').removeClass('hide');
 
-			    var $currentProblem = $(this).closest('body').find('.problemDisplay');
-			    basicMathProblems();
-			    $currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+
+			    $(document).ready(function() {
+				    var $currentProblem = $('.problemDisplay');
+				    basicMathProblems();
+				    $currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+			  	});
+
+
+
+			  	setInterval(function(){
+			  		var $computerCar = $('.progress').find('.computer');
+			  		console.log($computerCar);
+			  		var left = parseInt($computerCar.css('left'));
+			  		console.log(left);
+			  		left = (left + 50).toString();
+			  		$computerCar.css('left', left + 'px');
+			  	}, 5000);
 
 				})
 			});
@@ -51,8 +67,12 @@
 
 			    	var $currentProblem = $(this).closest('body').find('.problemDisplay');
 			    	var $submittedAnswer = $(this).val();
+			    	var $playerCar = $(this).closest('body').find('.player');
+			    	var left = parseInt($playerCar.css('left'));
 						if (Number($submittedAnswer) === result) {
+							left = (left + 50).toString();
 							$currentProblem.text('Correct!');
+							$playerCar.css('left', left + 'px');
 						} else {
 							$currentProblem.text('Incorrect');
 						}
@@ -62,8 +82,7 @@
 						setTimeout( function() {
 					    basicMathProblems();
 				    	$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
-				    }	, 2000);
-
+				    }	, 1000);
 
 			  	}
 				})

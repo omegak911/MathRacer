@@ -10,11 +10,33 @@ h1 {
 	grid-area: "title";
 }
 
+img {
+	margin: auto;
+}
+
 input {
 	height: 70px;
 	width: 150px;
 	font-size: 30px;
 	text-align: center;
+}
+
+.car {
+	position: absolute;
+}
+
+.car.player{
+	top: 37%;
+	left: 0px;
+}
+
+.car.computer {
+	top: 40%;
+	left: 0px;
+}
+
+.hide {
+	display: none;
 }
 
 .progress {
