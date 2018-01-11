@@ -1,0 +1,39 @@
+body { 
+	grid-template-areas:  "title"
+												"progress"
+												"problems"
+												"solutions";
+	text-align: center;
+}
+
+h1 {
+	grid-area: "title";
+}
+
+input {
+	height: 70px;
+	width: 150px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.progress {
+	grid-area: "progress";
+	height: 300px;
+	border-style: solid;
+}
+
+.problems {
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	grid-area: "problems";
+	height: 100px;
+	width: 500px;
+	border-style: solid;
+}
+
+.solutions {
+	grid-area: "solutions";
+}
+

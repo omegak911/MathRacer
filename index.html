@@ -8,28 +8,60 @@
 	</head>
 
 	<body>
-
-
 		<h1> Super Math Racer </h1>
 
-
-		<!-- Start Game Button with image -->
+		<div class="progress">
 
 		<!-- display area for user car and bot car moving right to left -->
 
+		</div>
+
+		<!-- Start Game Button with image -->
+		<button>Start Game</button>
+
+
+
+		<div class="problems">
+			<div class="problemDisplay">
+
+			</div>
 		<!-- box to display math problem, displays correct/incorrect, clears after every answer, then shows next problem-->
+		</div>
 
+		<div class="solutions">
 		<!-- textbox to provide answers -->
+		<input type="textbox">
+		</div>
 
+
+		<script>
+			$(document).ready(function() {
+				$('button').on('click', function(){
+
+			    var $currentProblem = $(this).closest('body').find('.problemDisplay');
+			    basicMathProblems();
+			    $currentProblem.text(firstParam + ' + ' + secondParam);
+
+				})
+			});
+			//Upon pressing Enter key, changes text value of problemDisplay;
+			$(document).ready(function() {
+				$('input').on('keypress', function(e) {
+					if (e.which === 13) {
+
+			    var $currentProblem = $(this).closest('body').find('.problemDisplay');
+			    basicMathProblems();
+			    $currentProblem.text(firstParam + ' + ' + secondParam);
+			    $(this).val('');
+
+			  	}
+				})
+			});
+
+		</script>
 
 
 	</body>
-
-
-
-
-
-
 
 
 </html>
