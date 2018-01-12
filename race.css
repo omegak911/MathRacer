@@ -26,17 +26,28 @@ input {
 }
 
 .car.player{
-	top: 37%;
+	top: 39%;
 	left: 0px;
 }
 
 .car.computer {
-	top: 40%;
+	top: 42%;
 	left: 0px;
 }
 
 .hide {
 	display: none;
+}
+
+.lose {
+	position: absolute;
+	top: 20%;
+	left: 40%;
+}
+.win {
+	position: absolute;
+	top: 20%;
+	left: 43%;
 }
 
 .progress {

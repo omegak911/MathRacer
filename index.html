@@ -12,8 +12,10 @@
 
 		<div class="progress">
 			<img src="images/road.jpg" alt="Road Background" width="100%" height="100%">
-			<img src="images/blueCar2.png" alt="player car" class="player car">
-			<img src="images/redCar2.png" alt="computer car" class="computer car">
+			<img src="images/blueCar.png" alt="player car" class="player car">
+			<img src="images/redCar.png" alt="computer car" class="computer car">
+			<img src='images/youLose.png' alt="you lose" class="lose hide">
+			<img src='images/youWin.png' alt="you win" class="win hide">
 
 		<!-- display area for user car and bot car moving right to left -->
 		</div>
@@ -44,18 +46,38 @@
 			    $(document).ready(function() {
 				    var $currentProblem = $('.problemDisplay');
 				    basicMathProblems();
-				    $currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+
+			      if (randomOperator === 0) {
+			    		$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
+			    	} else if (randomOperator === 1) {
+			    		$currentProblem.text(firstParam + ' - ' + secondParam + ' = ???');
+			    	} else if (randomOperator === 2) {
+			    		$currentProblem.text(firstParam + ' * ' + secondParam + ' = ???');
+			    	}
 			  	});
 
+			  	var gameOver = setInterval(function() {
+			  		if (player.loc === 20 || computer.loc === 20) {
+		  				$('.problemsBox').addClass('hide');
+		  				$('input').addClass('hide');
+			  			clearInterval(startCompCar);
+			  			clearInterval(gameOver);	
 
+			  			if (player.loc === 20) {
+			  				$('.progress').find('.win').removeClass('hide');
+			  			} else if (computer.loc === 20) {
+			  				$('.progress').find('.lose').removeClass('hide');
+			  			}
+			  		}
 
-			  	setInterval(function(){
+			  	}, 900);
+
+			  	var startCompCar = setInterval(function(){
 			  		var $computerCar = $('.progress').find('.computer');
-			  		console.log($computerCar);
 			  		var left = parseInt($computerCar.css('left'));
-			  		console.log(left);
-			  		left = (left + 50).toString();
+			  		left = (left + 61).toString();
 			  		$computerCar.css('left', left + 'px');
+			  		computer.loc += 1;																		//adds to computer.loc
 			  	}, 5000);
 
 				})
@@ -70,8 +92,9 @@
 			    	var $playerCar = $(this).closest('body').find('.player');
 			    	var left = parseInt($playerCar.css('left'));
 						if (Number($submittedAnswer) === result) {
-							left = (left + 50).toString();
+							left = (left + 61).toString();
 							$currentProblem.text('Correct!');
+							player.loc += 1;																	// adds to player.loc
 							$playerCar.css('left', left + 'px');
 						} else {
 							$currentProblem.text('Incorrect');
@@ -85,7 +108,7 @@
 				    		$currentProblem.text(firstParam + ' + ' + secondParam + ' = ???');
 				    	} else if (randomOperator === 1) {
 				    		$currentProblem.text(firstParam + ' - ' + secondParam + ' = ???');
-				    	} else {
+				    	} else if (randomOperator === 2) {
 				    		$currentProblem.text(firstParam + ' * ' + secondParam + ' = ???');
 				    	}
 				    }	, 1000);

@@ -52,6 +52,3 @@ function randomNumUpTo100() {
 function randomNumUpTo15() {
 	return Math.floor(Math.random() * 16);
 }
-
-basicMathProblems();
-console.log(firstParam);
